@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayuru Dilina</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="./images/logo.jpeg" alt="Logo" />
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Skills</a></li>
+            <li><a href="#">About Me</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <a href="#" class="hire-btn">Hire Me</a>
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Mobile Menu (hidden by default) -->
+        <div class="mobile-menu">
+
+            <ul class="mobile-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Skills</a></li>
+                <li><a href="#">About Me</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="about-section col-lg-6 col-md-12">
+                <div class="about-me-intro">
+                    <p> 👋 Hi, I'm Sayuru Dilina</p>
+                </div>
+                <div class="about-me-queots">
+                    <p>Building Scalable & <br>
+                        User Centric WebSites & Apps</p>
+                </div>
+                <div class="about-para">
+                    <p>
+                        I'm Sayuru Dilina. I'm a trainee software engineer from Galle, Sri Lanka, passionate about
+                        Java-based
+                        object-oriented programming and <br> full-stack development.
+                    </p>
+                </div>
+                <div class="btn-section">
+                    <div class="row g-0">
+                        <div class="view-btn col-lg-6 col-md-12">
+                            <button>View Work</button>
+                        </div>
+                        <div class="download-cv-btn col-lg-6 col-md-12">
+                            <button>Download Resume</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="about-section col-lg-6 col-md-12">
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script>
+
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+            document.querySelector('.menu-toggle i').classList.toggle('fa-bars');
+            document.querySelector('.menu-toggle i').classList.toggle('fa-times');
+        });
+        document.querySelectorAll('.mobile-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.mobile-menu').classList.remove('active');
+                document.querySelector('.menu-toggle i').classList.replace('fa-times', 'fa-bars');
+            });
+        });
+    </script>
+</body>
+
+</html>
