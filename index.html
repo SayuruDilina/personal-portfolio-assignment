@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <nav class="navbar" >
+    <nav class="navbar">
         <div class="logo">
             <img src="./images/logo.jpeg" alt="Logo" />
         </div>
@@ -29,7 +29,7 @@
             <i class="fas fa-bars"></i>
         </button>
 
-        <!-- Mobile Menu (hidden by default) -->
+
         <div class="mobile-menu">
 
             <ul class="mobile-links">
@@ -354,23 +354,23 @@
                     <div class="contact-section">
                         <div class="mb-3">
                             <label class="form-label">Name</label>
-                            <input type="text" class="form-control" placeholder="name">
+                            <input id="name" type="text" class="form-control" placeholder="name">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Email address</label>
-                            <input type="email" class="form-control" placeholder="name@gmail.com">
+                            <input id="email" type="email" class="form-control" placeholder="name@gmail.com">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Message</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea id="message" class="form-control" rows="3"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="contact-btn">
-                        <button type="submit">Submit</button>
+                        <button id="sendBtn" type="submit">Submit</button>
                     </div>
                 </div>
             </div>
@@ -399,7 +399,7 @@
                         </a>
                     </li>
                     <li class="ms-3">
-                        <a class="text-body-secondary" href="www.linkedin.com/in/sayuru-dilina-405a40313"
+                        <a class="text-body-secondary" href="https://www.linkedin.com/in/sayuru-dilina-405a40313"
                             aria-label="linkedin">
                             <img class="w-50" src="./images/linkedin.png" alt="">
                         </a>
@@ -426,6 +426,44 @@
                 document.querySelector('.menu-toggle i').classList.replace('fa-times', 'fa-bars');
             });
         });
+
+        document.getElementById("sendBtn").addEventListener("click", async () => {
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (!name || !email || !message) {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            try {
+                const res = await fetch("http://localhost:3000/send-email", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        from: email,
+                        subject: `Message from ${name}`,
+                        text: message
+                    })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    alert("Message sent successfully! 🎉");
+                    document.getElementById("name").value = "";
+                    document.getElementById("email").value = "";
+                    document.getElementById("message").value = "";
+                } else {
+                    alert("Failed: " + data.message);
+                }
+            } catch (error) {
+                alert("Error sending message.");
+                console.error(error);
+            }
+        });
+
     </script>
 </body>
 
